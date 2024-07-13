@@ -2,7 +2,7 @@
 %define devname %mklibname -d uvg266
 
 %define _disable_ld_no_undefined 1
-%define _disable_lto 1
+#define _disable_lto 1
 
 Name:           uvg266
 Version:        0.8.1
