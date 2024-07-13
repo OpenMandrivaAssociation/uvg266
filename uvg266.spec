@@ -28,7 +28,7 @@ The goal is to have a fully functional VVC encoder that is fast and efficient.
 
 %build
 %cmake \
-       -DBUILD_SHARED_LIBS=ON \
+       -DBUILD_SHARED_LIBS=OFF \
        -DBUILD_TESTS=OFF \
        -DUVG_DEFAULT_BUILD_TYPE="Release"
        
