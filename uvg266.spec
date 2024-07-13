@@ -1,6 +1,9 @@
 %define libname %mklibname uvg266
 %define devname %mklibname -d uvg266
 
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 Name:           uvg266
 Version:        0.8.1
 Release:        1
@@ -28,7 +31,7 @@ The goal is to have a fully functional VVC encoder that is fast and efficient.
 
 %build
 %cmake \
-       -DBUILD_SHARED_LIBS=OFF \
+       -DBUILD_SHARED_LIBS=ON \
        -DBUILD_TESTS=OFF \
        -DUVG_DEFAULT_BUILD_TYPE="Release"
        
