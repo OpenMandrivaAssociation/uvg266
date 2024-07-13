@@ -27,6 +27,8 @@ The goal is to have a fully functional VVC encoder that is fast and efficient.
 %autosetup -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake \
        -DBUILD_SHARED_LIBS=ON \
        -DBUILD_TESTS=OFF \
