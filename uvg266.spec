@@ -1,6 +1,9 @@
 %define libname %mklibname uvg266
 %define devname %mklibname -d uvg266
 
+# Needed or compilaton with shared libs end with few undefindec symbold
+%define _disable_ld_no_undefined 1
+
 Name:           uvg266
 Version:        0.8.1
 Release:        1
@@ -10,6 +13,8 @@ URL:            https://github.com/ultravideo/uvg266
 Source0:        https://github.com/ultravideo/uvg266/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
+
+Requires:	%{libname} = %{EVRD}
 
 %description
 uvg266 is a VVC encoder that is based on our Kvazaar. The development of uvg266 started in 2018 by starting to convert the CABAC and intra prediction of Kvazaar to VVC. 
@@ -22,6 +27,22 @@ adaptive loop filter (ALF), and intra block copy (IBC). Additionally, uvg266 sup
 
 In the future we plan on developping methods to reduce the massive complexity of the VVC encoder and start working on the inter tools. 
 The goal is to have a fully functional VVC encoder that is fast and efficient.
+
+%package -n %{libname}
+Summary:   uvg266 encoder %{name} libraries
+Requires:  %{name} = %{EVRD}
+
+%description -n %{libname}
+The %{name}-devel package contains libraries and header files for developing
+applications that use %{name}. This package contains the shared libraries.
+
+%package -n %{devname}
+Summary:        Development files for %{name}
+Requires:	%{libname} = %{EVRD}
+
+%description -n %{devname}
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
 
 %prep
 %autosetup -p1
@@ -38,3 +59,12 @@ The goal is to have a fully functional VVC encoder that is fast and efficient.
 %make_install -C build
 
 %files
+%{_bindir}/uvg266
+
+%files -n %{libname}
+%{_libdir}/libuvg266.so*
+
+%files -n %{devname}
+%{_includedir}/uvg266.h
+%{_libdir}/pkgconfig/uvg266.pc
+%{_mandir}/man1/uvg266.1.*
