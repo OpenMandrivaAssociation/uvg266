@@ -49,7 +49,7 @@ developing applications that use %{name}.
 
 %build
 %cmake \
-       -DBUILD_SHARED_LIBS=OFF \
+       -DBUILD_SHARED_LIBS=ON \
        -DBUILD_TESTS=OFF \
        -DUVG_DEFAULT_BUILD_TYPE="Release"
        
