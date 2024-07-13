@@ -10,6 +10,7 @@ URL:            https://github.com/ultravideo/uvg266
 Source0:        https://github.com/ultravideo/uvg266/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
+BuildRequires:  mold
 
 %description
 uvg266 is a VVC encoder that is based on our Kvazaar. The development of uvg266 started in 2018 by starting to convert the CABAC and intra prediction of Kvazaar to VVC. 
@@ -27,6 +28,7 @@ The goal is to have a fully functional VVC encoder that is fast and efficient.
 %autosetup -p1
 
 %build
+export LD=mold
 %cmake \
        -DBUILD_SHARED_LIBS=ON \
        -DBUILD_TESTS=OFF \
